@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private bool m_ShouldLook;
+        private PhysicsHandle m_PhysHandle;
         private AudioSource m_AudioSource;
 
         // Use this for initialization
@@ -57,6 +58,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             m_ShouldLook = true;
+            m_PhysHandle = GetComponentInChildren<PhysicsHandle>();
         }
 
 
@@ -68,11 +70,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_Camera.transform.childCount > 0)
                 {
                     m_ShouldLook = false;
+                    m_PhysHandle.SetInspecting(true);
                 }
             }
             if (Input.GetMouseButtonUp(1))
             {
                 m_ShouldLook = true;
+                m_PhysHandle.SetInspecting(false);
             }
             if (m_ShouldLook)
             {
@@ -123,7 +127,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
-
 
             if (m_CharacterController.isGrounded)
             {

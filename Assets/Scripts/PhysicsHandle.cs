@@ -6,8 +6,10 @@ public class PhysicsHandle : MonoBehaviour {
 
     public float RayDistance = 3.0f;
     public float Reach = 0.5f;
+    public float ObjRotSpeed = 1.0f;
     private GameObject carriedObject;
     bool carryingObject = false;
+    bool inspectingObj = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +22,8 @@ public class PhysicsHandle : MonoBehaviour {
             // If we aren't carrying an object, try to pick one up
             if (carryingObject == false)
             {
-                Debug.Log("attempting to grab object");
                 // create ray
-                Debug.DrawRay(transform.position, transform.forward, Color.red);
+                Debug.DrawRay(transform.position, transform.forward * RayDistance, Color.red);
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward * RayDistance, out hit))
                 {
@@ -57,8 +58,20 @@ public class PhysicsHandle : MonoBehaviour {
         if(carryingObject == true)
         {
             carriedObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            carriedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            if (!inspectingObj)
+            {
+                carriedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            }
+            else
+            {
+                carriedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * ObjRotSpeed);
+            }
         }
+    }
+
+    public void SetInspecting(bool shouldInspect)
+    {
+        inspectingObj = shouldInspect;
     }
 
     public void ResetCarriedObject()

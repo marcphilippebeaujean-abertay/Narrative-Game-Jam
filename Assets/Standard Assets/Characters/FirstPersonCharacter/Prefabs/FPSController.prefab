@@ -352,3 +352,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RayDistance: 3
   Reach: 1.7
+  ObjRotSpeed: 50
