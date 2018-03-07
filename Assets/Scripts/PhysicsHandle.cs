@@ -44,11 +44,14 @@ public class PhysicsHandle : MonoBehaviour {
             }
             else
             {
-                // Drop the carried object
-                carriedObject.GetComponent<Rigidbody>().useGravity = true;
-                carriedObject.transform.parent = null;
-                carriedObject = null;
-                carryingObject = false;
+                if (carryingObject == true)
+                {
+                    // Drop the carried object
+                    carriedObject.GetComponent<Rigidbody>().useGravity = true;
+                    carriedObject.transform.parent = null;
+                    carriedObject = null;
+                    carryingObject = false;
+                }
             }
         }
         if(carryingObject == true)
