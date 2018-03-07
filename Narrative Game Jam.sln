@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Narrative Game Jam.Plugins", "Narrative Game Jam.Plugins.csproj", "{D5E2D205-4949-A487-4558-0E31F25592AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Narrative Game Jam", "Narrative Game Jam.csproj", "{22C41621-6CB9-90A1-8861-45BE87223F65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Narrative Game Jam.Editor.Plugins", "Narrative Game Jam.Editor.Plugins.csproj", "{E300AB8F-933B-E935-54B7-76543EC05C20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5E2D205-4949-A487-4558-0E31F25592AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E2D205-4949-A487-4558-0E31F25592AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E2D205-4949-A487-4558-0E31F25592AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E2D205-4949-A487-4558-0E31F25592AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C41621-6CB9-90A1-8861-45BE87223F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C41621-6CB9-90A1-8861-45BE87223F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C41621-6CB9-90A1-8861-45BE87223F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C41621-6CB9-90A1-8861-45BE87223F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E300AB8F-933B-E935-54B7-76543EC05C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E300AB8F-933B-E935-54B7-76543EC05C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E300AB8F-933B-E935-54B7-76543EC05C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E300AB8F-933B-E935-54B7-76543EC05C20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
