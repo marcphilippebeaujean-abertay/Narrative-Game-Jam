@@ -16,7 +16,7 @@ public class PhysicsHandle : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
+        carryingObject = false;
     }
 	
 	// Update is called once per frame
@@ -63,6 +63,8 @@ public class PhysicsHandle : MonoBehaviour {
                     // disable rigid body components that will hinder our movement
                     carriedObject.GetComponent<Rigidbody>().useGravity = false;
                     Physics.IgnoreCollision(GetComponentInParent<Collider>(), carriedObject.GetComponent<Collider>());
+                    // setup class in the physics object
+                    carriedObject.GetComponentInChildren<PhysicsReset>().SetCarrying(true);
                     // reset box transform
                     carriedObject.transform.rotation = Quaternion.identity;
                     ResetCarriedObject();
@@ -77,7 +79,9 @@ public class PhysicsHandle : MonoBehaviour {
                 {
                     // Drop the carried object
                     carriedObject.GetComponent<Rigidbody>().useGravity = true;
+                    carriedObject.GetComponent<Rigidbody>().isKinematic = false;
                     carriedObject.transform.parent = null;
+                    carriedObject.GetComponentInChildren<PhysicsReset>().SetCarrying(false);
                     Physics.IgnoreCollision(GetComponentInParent<Collider>(), carriedObject.GetComponent<Collider>(), false);
                     carriedObject = null;
                     carryingObject = false;
