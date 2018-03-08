@@ -943,8 +943,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e2879a9bd7d5f041a75b28d727451cc, type: 3}
   - {fileID: 8300000, guid: a9adb24a5e0d0a64bb85b15b5d028d2b, type: 3}
   - {fileID: 8300000, guid: a9adb24a5e0d0a64bb85b15b5d028d2b, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9c070ca78e0352a40b5da5271ab78ddc, type: 3}
+  - {fileID: 8300000, guid: 43eb40aa542609945b0d93dca7991365, type: 3}
+  - {fileID: 8300000, guid: 37cb4328487b02b42ae750f397cdefd4, type: 3}
   DialogueText:
   - "Alright, do you read me? Good, let\u2019s go. Remember the story we're looking
     for. You\u2019re going into the tunnels, finding more evidence of the terrorists\u2019
@@ -953,8 +954,13 @@ MonoBehaviour:
     on new ones."
   - 'The top rifles of the time, carried by the brave and valiant government soldiers. '
   - The people living in these tunnels only had spears and pitchforks.
-  - 
-  - 
+  - "It\u2019s covered in propoganda posters, and those are covered in graffiti. They
+    completely defaced it."
+  - "Lowly area for sleeping in the tunnels.  These \u2018beds\u2019 are mostly just
+    blankets."
+  - A grand, vault style door invented by the government to secure the living quarters
+    of those in the tunnels.  Looks more like a prison door to keep people locked
+    in.
   WritingTime: 0.04
   textElapseTime: 0.2
   audioSource: {fileID: 82127658393201636}

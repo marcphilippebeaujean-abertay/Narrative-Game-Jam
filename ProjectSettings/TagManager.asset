@@ -7,6 +7,8 @@ TagManager:
   - Physics Object
   - Dialog Text
   - Exit Menu
+  - Fire
+  - Inspect Text
   layers:
   - Default
   - TransparentFX

@@ -74,6 +74,8 @@ public class Dialogue : MonoBehaviour {
                 textObject.text = "";
                 writing = true;
                 playedDialogues.Add(DialogueID);
+                textElapseTimer = 0.0f;
+                writingTimer = 0.0f;
             }
         }
     }
