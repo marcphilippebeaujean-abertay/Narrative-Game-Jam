@@ -108,22 +108,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                // toggle escape menu
-                m_inMenu = !m_inMenu;
-                m_escapeMenu.SetActive(m_inMenu);
-                if (m_inMenu)
-                {
-                    m_ShouldLook = false;
-                    m_MouseLook.SetCursorLock(false);
-                }
-                else
-                {
-                    m_ShouldLook = true;
-                    m_MouseLook.SetCursorLock(true);
-                }
+                ToggleMenu();
             }
         }
 
+        public void ToggleMenu()
+        {
+            // toggle escape menu
+            m_inMenu = !m_inMenu;
+            m_escapeMenu.SetActive(m_inMenu);
+            if (m_inMenu)
+            {
+                m_ShouldLook = false;
+                m_MouseLook.SetCursorLock(false);
+            }
+            else
+            {
+                m_ShouldLook = true;
+                m_MouseLook.SetCursorLock(true);
+            }
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
         private void PlayLandingSound()
         {

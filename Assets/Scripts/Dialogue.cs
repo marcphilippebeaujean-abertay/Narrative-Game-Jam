@@ -71,6 +71,7 @@ public class Dialogue : MonoBehaviour {
                 writing = false;
             }
             curChar++;
+            writingTimer = 0.0f;
         }
         else
         {
