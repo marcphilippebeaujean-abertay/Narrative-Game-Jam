@@ -28,6 +28,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+        private GameObject m_escapeMenu;
+        private bool m_inMenu;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -59,6 +61,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
             m_ShouldLook = true;
             m_PhysHandle = GetComponentInChildren<PhysicsHandle>();
+            m_escapeMenu = GameObject.FindGameObjectWithTag("Exit Menu");
+            m_escapeMenu.SetActive(false);
         }
 
 
@@ -101,6 +105,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                // toggle escape menu
+                m_inMenu = !m_inMenu;
+                m_escapeMenu.SetActive(m_inMenu);
+                if (m_inMenu)
+                {
+                    m_ShouldLook = false;
+                    m_MouseLook.SetCursorLock(false);
+                }
+                else
+                {
+                    m_ShouldLook = true;
+                    m_MouseLook.SetCursorLock(true);
+                }
+            }
         }
 
 

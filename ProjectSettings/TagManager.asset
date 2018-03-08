@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Physics Object
   - Dialog Text
+  - Exit Menu
   layers:
   - Default
   - TransparentFX

@@ -61,6 +61,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         public void UpdateCursorLock()
@@ -68,6 +73,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //if the user set "lockCursor" we check & properly lock the cursos
             if (lockCursor)
                 InternalLockUpdate();
+        }
+
+        public void ToggleMenuControls(bool menuOpen)
+        {
+            if(menuOpen)
+            {
+                SetCursorLock(false);
+            }
+            else
+            {
+                SetCursorLock(true);
+            }
         }
 
         private void InternalLockUpdate()
