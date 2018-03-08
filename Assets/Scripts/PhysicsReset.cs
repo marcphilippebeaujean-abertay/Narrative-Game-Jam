@@ -7,6 +7,7 @@ public class PhysicsReset : MonoBehaviour {
     GameObject player;
     Rigidbody rigidBody;
     bool beingCarried = false;
+    public int DialogueID = 69;
 
 	// Use this for initialization
 	void Start () {
@@ -40,5 +41,10 @@ public class PhysicsReset : MonoBehaviour {
     public void SetCarrying(bool currentCarriedObject)
     {
         beingCarried = currentCarriedObject;
+    }
+
+    public int GetDialogueID()
+    {
+        return DialogueID;
     }
 }

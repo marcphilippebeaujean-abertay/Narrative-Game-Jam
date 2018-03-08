@@ -10,16 +10,16 @@ public class Dialogue : MonoBehaviour {
     public float WritingTime;
     public float textElapseTime = 0.0f;
     private Text textObject;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private float writingTimer = 0.0f;
     private string currentString = "";
     private bool writing = false;
     private int curChar = 0;
     private float textElapseTimer = 0.0f;
+    List<int> playedDialogues = new List<int>();
 
-	// Use this for initialization
-	void Start () {
-        audioSource = GetComponent<AudioSource>();
+    // Use this for initialization
+    void Start () {
         textObject = GameObject.FindGameObjectWithTag("Dialog Text").GetComponent<Text>();
 	}
 	
@@ -54,11 +54,28 @@ public class Dialogue : MonoBehaviour {
 
     public void PlayDialog(int DialogueID)
     {
-        audioSource.Stop();
-        curChar = 0;
-        currentString = DialogueText[DialogueID];
-        audioSource.PlayOneShot(DialogueAudio[DialogueID]);
-        writing = true;
+        if (DialogueID != 69)
+        {
+            bool alreadyPlayed = false;
+            for (int i = 0; i < playedDialogues.Count; i++)
+            {
+                if (DialogueID == playedDialogues[i])
+                {
+                    alreadyPlayed = true;
+                }
+            }
+            if (alreadyPlayed == false)
+            {
+                Debug.Log("playing dialogue!");
+                audioSource.Stop();
+                curChar = 0;
+                currentString = DialogueText[DialogueID];
+                audioSource.PlayOneShot(DialogueAudio[DialogueID]);
+                textObject.text = "";
+                writing = true;
+                playedDialogues.Add(DialogueID);
+            }
+        }
     }
 
     void WritingDialog()

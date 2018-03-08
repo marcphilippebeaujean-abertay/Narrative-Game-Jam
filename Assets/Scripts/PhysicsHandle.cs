@@ -13,6 +13,7 @@ public class PhysicsHandle : MonoBehaviour {
     private Dialogue dialogueScript;
     bool carryingObject = false;
     bool inspectingObj = false;
+    List<int> playedDialogues = new List<int>();
 
 	// Use this for initialization
 	void Start ()
@@ -30,7 +31,8 @@ public class PhysicsHandle : MonoBehaviour {
             if (carryingObject == false)
             {
 
-                Collider[] hitColliders = Physics.OverlapBox(ColliderObject.position, new Vector3(1, 1, 1), Quaternion.identity, GrabingLayerMask);
+                Collider[] hitColliders = Physics.OverlapBox(ColliderObject.position, new Vector3(0.5f, 0.5f, 2.0f), Quaternion.identity, GrabingLayerMask);
+                drawCube(ColliderObject.position);
                 int i = 0;
                 //Check when there is a new collider coming into contact with the box
                 while (i < hitColliders.Length)
@@ -52,6 +54,7 @@ public class PhysicsHandle : MonoBehaviour {
                     carriedObject.transform.rotation = Quaternion.identity;
                     ResetCarriedObject();
                     carryingObject = true;
+                    dialogueScript.PlayDialog(carriedObject.GetComponentInChildren<PhysicsReset>().GetDialogueID());
                     // only apply to the first object we hit
                     break;
                 }
@@ -85,7 +88,15 @@ public class PhysicsHandle : MonoBehaviour {
             }
         }
     }
-
+    private IEnumerator drawCube(Vector3 position)
+    {
+        while (true)
+        {
+            Gizmos.DrawCube(position, new Vector3(0.5f, 0.5f, 3.0f));
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    
     public void SetInspecting(bool shouldInspect)
     {
         inspectingObj = shouldInspect;
@@ -101,4 +112,24 @@ public class PhysicsHandle : MonoBehaviour {
             carriedObject.transform.position = reachPosition;
         }
     }
+
+    //void PlayStoryDialogues(int dialogueID)
+    //{
+    //    if (dialogueID != 69)
+    //    {
+    //        bool alreadyPlayed = false;
+    //        for (int i = 0; i < playedDialogues.Count; i++)
+    //        {
+    //            if (dialogueID == playedDialogues[i])
+    //            {
+    //                alreadyPlayed = true;
+    //            }
+    //        }
+    //        if (alreadyPlayed == false)
+    //        {
+    //            dialogueScript.PlayDialog(dialogueID);
+    //            playedDialogues.Add(dialogueID);
+    //        }
+    //    }
+    //}
 }
