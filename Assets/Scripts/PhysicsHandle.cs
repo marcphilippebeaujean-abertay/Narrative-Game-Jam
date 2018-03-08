@@ -10,6 +10,7 @@ public class PhysicsHandle : MonoBehaviour {
     public LayerMask GrabingLayerMask;
     public Transform ColliderObject;
     private GameObject carriedObject;
+    private Dialogue dialogueScript;
     bool carryingObject = false;
     bool inspectingObj = false;
 
@@ -17,6 +18,8 @@ public class PhysicsHandle : MonoBehaviour {
 	void Start ()
     {
         carryingObject = false;
+        dialogueScript = GetComponentInParent<Dialogue>();
+        dialogueScript.PlayDialog(0);
     }
 	
 	// Update is called once per frame
@@ -26,26 +29,6 @@ public class PhysicsHandle : MonoBehaviour {
             // If we aren't carrying an object, try to pick one up
             if (carryingObject == false)
             {
-                //// create ray
-                //Debug.DrawRay(transform.position, transform.forward * RayDistance, Color.red);
-                //RaycastHit hit;
-                //if (Physics.Raycast(transform.position, transform.forward * RayDistance, out hit))
-                //{
-                //    if (hit.transform.tag == "Physics Object")
-                //    {
-                //        // detect object hit by ray
-                //        carriedObject = hit.transform.gameObject;
-                //        Debug.Log("hit physics object");
-                //        // make camera the parent of the hit object, so that it follows camera around
-                //        carriedObject.transform.SetParent(transform);
-                //        // disable rigid body
-                //        carriedObject.GetComponent<Rigidbody>().useGravity = false;
-                //        // reset box transform
-                //        carriedObject.transform.rotation = Quaternion.identity;
-                //        ResetCarriedObject();
-                //        carryingObject = true;
-                //    }
-                //}
 
                 Collider[] hitColliders = Physics.OverlapBox(ColliderObject.position, new Vector3(1, 1, 1), Quaternion.identity, GrabingLayerMask);
                 int i = 0;
