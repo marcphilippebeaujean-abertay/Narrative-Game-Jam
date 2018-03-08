@@ -8,6 +8,7 @@ public class DialoguePlay : MonoBehaviour {
     public int DialogueID = 69;
     Text interactionText;
     bool playerColliding;
+    bool clipPlayed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,23 +18,30 @@ public class DialoguePlay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(Input.GetKeyDown(KeyCode.E))
+        if (clipPlayed == false)
         {
-            if(playerColliding)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Dialogue>().PlayDialog(DialogueID);
-                interactionText.text = "";
+                if (playerColliding)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Dialogue>().PlayDialog(DialogueID);
+                    interactionText.text = "";
+                    clipPlayed = true;
+                }
             }
         }	
 	}
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (clipPlayed == false)
         {
-            //other.gameObject.GetComponent<Dialogue>().PlayDialog(DialogueID);
-            interactionText.text = "Press 'E' to Interact";
-            playerColliding = true;
+            if (other.tag == "Player")
+            {
+                //other.gameObject.GetComponent<Dialogue>().PlayDialog(DialogueID);
+                interactionText.text = "Press 'E' to Interact";
+                playerColliding = true;
+            }
         }
     }
 
